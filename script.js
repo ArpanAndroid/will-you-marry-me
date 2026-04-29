@@ -43,8 +43,12 @@ function moveNoBtn() {
     noBtn.style.transform = `translate(${noBtnX}px, ${noBtnY}px)`;
 }
 
-// Make the No button slide away on hover
+// Make the No button slide away on hover or touch
 noBtn.addEventListener('mouseover', moveNoBtn);
+noBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault(); // Prevent default touch behavior
+    moveNoBtn();
+});
 
 // Just in case they manage to click it (mobile fallback)
 noBtn.addEventListener('click', (e) => {
