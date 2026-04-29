@@ -56,10 +56,19 @@ noBtn.addEventListener('click', (e) => {
     moveNoBtn();
 });
 
+// Check if they already said yes!
+if (localStorage.getItem('proposalAccepted') === 'true') {
+    container.classList.add('hidden');
+    successContainer.classList.remove('hidden');
+    createConfetti();
+}
+
 // Yes button clicked
 yesBtn.addEventListener('click', () => {
     container.classList.add('hidden');
     successContainer.classList.remove('hidden');
+    // Save state so it stays on this page on refresh
+    localStorage.setItem('proposalAccepted', 'true');
     createConfetti();
 });
 
